@@ -93,11 +93,14 @@ describe("Given I am connected as an employee", () => {
 
   describe("When I choose an wrong file to upload ", () => {
     test("Then an error message is displayed", async () => {
-
-
       /**
        * Control upload file format
-       * If error format, displayed message  
+       * If error format, displayed message
+       * UI Construction
+       * Create DOM HTML
+       * Mock handleChangeFile function
+       * Launch File with wrong Format
+       * Check if displayed error message
        */
 
       // Init onNavigate
@@ -146,17 +149,21 @@ describe("Given I am connected as an employee", () => {
           "hide"
         );
       });
-
     });
   });
 
   describe("When I choose an image to upload ", () => {
     test("Then the file input should get the file name", () => {
-
       /**
-       * 
+       * Control upload file format
+       * If good format
+       * UI Construction
+       * Create DOM HTML
+       * Mock handleChangeFile function
+       * Launch File with good Format
+       * Check if not displayed error message
        */
-      // UI Construction
+
       const domHtml = constructNewBillUI();
 
       // Init newBill Class constructor
@@ -195,10 +202,6 @@ describe("Given I am connected as an employee", () => {
       ).toBeTruthy();
     });
   });
-
-
-
-
 
   // TEST API resonse
 
@@ -276,6 +279,7 @@ describe("Given I am connected as an employee", () => {
       bill.createBill = (bill) => bill;
 
       // Definition of field values
+      // with mock Data
       getByTestId(document.body, "expense-type").value = newBill.type;
       getByTestId(document.body, "expense-name").value = newBill.name;
       getByTestId(document.body, "amount").value = newBill.amount;
