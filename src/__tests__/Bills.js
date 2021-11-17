@@ -187,7 +187,7 @@ describe("Given I am connected as an employee", () => {
   describe("When navigate to Bills UI", () => {
     test("Find all bills from mock API GET", async () => {
       //On check que le call API revoie bien toutes les factures
-      //Data du fichier firebase se trouvant dans le repertoire __mock__
+      //Data lier au fichier firebase se trouvant dans le repertoire __mock__
 
       // Spy on Firebase Mock
       const getSpy = jest.spyOn(firebase, "get");
