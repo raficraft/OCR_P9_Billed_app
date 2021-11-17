@@ -173,10 +173,12 @@ describe("Given I am connected as an employee", () => {
 
       //Attached events and trigged
       firstEyeIcon.addEventListener("click", handleClickIconEye);
+      //trigger event click
       userEvent.click(firstEyeIcon);
-      const modal = document.getElementById("modaleFile");
 
+      const modal = document.getElementById("modaleFile");
       expect(handleClickIconEye).toHaveBeenCalled();
+      //Check if modal has show in DOM
       expect(modal).toBeTruthy();
     });
   });
