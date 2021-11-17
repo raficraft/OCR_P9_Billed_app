@@ -43,7 +43,6 @@ describe("Given I am connected as an employee", () => {
      * - Definie la Route
      * - Mock les données
      * - On ce positionne sur la page [bills]
-     * - Mock data
      * - Inject Dom
      * - Get Element
      * - If Element exist [ except(el).assert() ]
@@ -57,9 +56,9 @@ describe("Given I am connected as an employee", () => {
       //We recover a copy of the mocked data
       jest.mock("../app/Firestore");
       Firestore.bills = () => ({ bills, get: jest.fn().mockResolvedValue() });
-      location.assign(pathname);
 
       // Define pathname : #employee/bills
+      location.assign(pathname);
 
       // Create Dom HTML
       document.body.innerHTML = `<div id="root"></div>`;
@@ -95,14 +94,15 @@ describe("Given I am connected as an employee", () => {
     //Data-testid = btn-new-bill
     test("Then I should navigate to #employee/bill/new", () => {
       /**
-       * Dans ce premier on verifie que l'on navigue
+       * Dans ce premier cas on verifie que l'on navigue
        *  bien vers la page newBills
        *
        * - On insert les élement de la page newBills dans le dom
        * - on mock la function de redirection
        * - On récupère l'element dans le dom
        * - On simule le click sur le bouton
-       *
+       * - On verifie qu'un des élément contenue dans la page bills
+       * est affiché.
        **/
 
       // UI Construction
@@ -126,6 +126,7 @@ describe("Given I am connected as an employee", () => {
       userEvent.click(btnNewBill);
 
       expect(handleClickNewBill).toHaveBeenCalled();
+      //check if DIV content text exists
       expect(
         getByText(document.body, "Envoyer une note de frais")
       ).toBeTruthy();
